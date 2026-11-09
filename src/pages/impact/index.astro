@@ -1,0 +1,102 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+
+const RUBBLE = 'https://thepatriot.in/reports/rising-from-the-rubble-33882';
+---
+
+<Base title="Impact & Research">
+  <PageHero
+    eyebrow="Impact & research"
+    title="What we have done so far"
+    lede="Before NSF was registered, most of our work was teaching, much of it informal. Alongside it, we documented two other kinds of work: research to understand the community, and relief when a crisis made learning impossible."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="prose">
+          <p class="eyebrow">1 · Teaching</p>
+          <h2 style="margin-top:0">Mostly informal, for over a decade</h2>
+          <p>
+            For over a decade, most of our teaching has happened informally: free lessons in the jhuggis, and classes at
+            Vanphool Pathshala, a free school in Yamuna Khadar that Vikram helped run, which by 2020 was holding classes
+            under the flyover and reaching <span class="hl">nearly 300 children</span>
+            (<a href={RUBBLE}>"Rising from the rubble", The Patriot</a>). We have also supported
+            <span class="hl">200+ children into school</span> under the RTE/EWS quota.
+          </p>
+          <p>
+            Because this work was informal, most of it wasn't tracked child by child. Two examples we did follow closely
+            are <a href="/stories">Pushpa and Rupam →</a>. With NSF, we now set goals for each child in our
+            <a href="/donate">pilot</a> and track their progress through the year.
+          </p>
+        </div>
+        <img src="/images/community/teaching.jpeg" alt="Children gathered for an informal class in Yamuna Khadar" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="split">
+        <div class="prose">
+          <p class="eyebrow">2 · Surveys &amp; research</p>
+          <h2 style="margin-top:0">Understanding the community we are serving</h2>
+          <p>
+            To find the children who need us, understand their context, and evaluate progress, we run various surveys. Our 2020
+            census mapped <span class="hl">1,495 households</span> (6,385 individuals) and found
+            <strong>300 children who had never attended school</strong> and <strong>112 who had dropped out</strong>.
+            Our June 2026 household survey, followed by calls with families, identified the
+            <a href="/programs">28 children</a> in our current pilot.
+          </p>
+          <p><a href="/impact/surveys-and-research">See the surveys and findings →</a></p>
+        </div>
+        <a href="/impact/surveys-and-research"><img src="/images/research/fullmap.png" alt="Density map of households from the 2020 community survey" loading="lazy" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="relief">
+    <div class="container">
+      <p class="eyebrow">3 · Relief</p>
+      <p class="statement">
+        While our focus is on supporting education for children,
+        <span class="soft">we know that many community-based and household-based factors play a critical role in making
+        it difficult. Hence, alongside education, we have run tightly scoped drives in the past for storm relief,
+        mosquito nets, and ration support.</span>
+      </p>
+      <div class="cards four" style="margin-top:28px">
+        <a class="card" href="/impact/storm-relief">
+          <img src="/images/storm/after2.jpeg" alt="Huts covered with new waterproof tarpaulins" loading="lazy" />
+          <div class="body">
+            <h3>Storm relief</h3>
+            <p>Waterproof tarpaulins for 121 families to rebuild huts destroyed by the June 2020 storms.</p>
+            <span class="more">Read more →</span>
+          </div>
+        </a>
+        <a class="card" href="/impact/mosquito-nets">
+          <img src="/images/nets/dist2.jpeg" alt="Mosquito net distribution" loading="lazy" />
+          <div class="body">
+            <h3>Mosquito nets</h3>
+            <p>660 insecticide-treated mosquito nets distributed free of cost ahead of the 2020 monsoon, with help from over 50 donors.</p>
+            <span class="more">Read more →</span>
+          </div>
+        </a>
+        <div class="card">
+          <img src="/images/community/gallery3.jpeg" alt="Homes in the Yamuna Khadar settlement" loading="lazy" />
+          <div class="body">
+            <h3>COVID-19 ration relief</h3>
+            <p>800+ families supported with ration kits during the COVID-19 lockdowns, distributed by Vikram with Basti Suraksha Manch.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="/images/community/house1.jpeg" alt="A home in Yamuna Khadar" loading="lazy" />
+          <div class="body">
+            <h3>Documentation camps</h3>
+            <p>Camps to help families apply for voter IDs, ration cards, and Aadhaar, the documents that school enrolment and welfare schemes depend on.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

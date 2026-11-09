@@ -1,0 +1,31 @@
+---
+// Survey block boundaries for the Yamuna Khadar / Mayur Vihar Phase-I settlements,
+// carried over from the 2020 site (originally drawn in Google My Maps).
+import boundaries from '../data/boundaries.json';
+---
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+/>
+<div id="community-map" class="map" data-polys={JSON.stringify(boundaries)} role="img" aria-label="Map of the community areas we work in, along the Yamuna River in Mayur Vihar Phase-I, East Delhi"></div>
+
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script is:inline>
+  (function () {
+    var el = document.getElementById('community-map');
+    if (!el || !window.L) return;
+    var polys = JSON.parse(el.dataset.polys);
+    var map = L.map(el, { scrollWheelZoom: false });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+    }).addTo(map);
+    var group = L.featureGroup(
+      polys.map(function (p) {
+        return L.polygon(p, { color: '#0033ff', weight: 3, opacity: 0.6, fillOpacity: 0.2 });
+      })
+    ).addTo(map);
+    map.fitBounds(group.getBounds(), { padding: [12, 12] });
+  })();
+</script>

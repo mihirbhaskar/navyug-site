@@ -1,0 +1,353 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+
+type Row = { label: string; n?: number | string; pct?: number | string };
+
+const demographics: Row[] = [
+  { label: 'Migrant family — Yes', n: 73, pct: 40.6 },
+  { label: 'Social category — OBC', n: 78, pct: 43.3 },
+  { label: 'Social category — SC', n: 29, pct: 16.1 },
+  { label: 'Social category — ST', n: 13, pct: 7.2 },
+  { label: 'Social category — General', n: 28, pct: 15.6 },
+  { label: 'Household size (mean)', n: 4.7, pct: '—' },
+  { label: 'Children per household (mean)', n: 1.9, pct: '—' },
+];
+const income: Row[] = [
+  { label: 'Less than ₹5,000', n: 25, pct: 13.9 },
+  { label: '₹5,000 – 9,999', n: 52, pct: 28.9 },
+  { label: '₹10,000 – 14,999', n: 57, pct: 31.7 },
+  { label: '₹15,000 – 24,999', n: 28, pct: 15.6 },
+  { label: '₹25,000 – 49,999', n: 6, pct: 3.3 },
+  { label: 'No regular income', n: 5, pct: 2.8 },
+];
+const schemes: Row[] = [
+  { label: 'Aadhaar — all household members', pct: 84.0 },
+  { label: 'Aadhaar — children only', pct: 94.2 },
+  { label: 'Ration card', pct: 61.1 },
+  { label: 'PMJAY / Ayushman Bharat card received', pct: 16.1 },
+];
+const schooling: Row[] = [
+  { label: 'Currently in school', n: 206, pct: 57.1 },
+  { label: 'Too young for school', n: 83, pct: 23.0 },
+  { label: 'Dropped out of school', n: 53, pct: 14.7 },
+  { label: 'Never enrolled', n: 19, pct: 5.3 },
+];
+const dropout: Row[] = [
+  { label: 'Financial problems (fees, books, uniform)', n: 6, pct: 11.3 },
+  { label: 'Had to work for family income', n: 5, pct: 9.4 },
+  { label: 'Failed / repeatedly held back', n: 4, pct: 7.5 },
+  { label: 'Early marriage', n: 3, pct: 5.7 },
+  { label: 'Lack of interest in studies', n: 2, pct: 3.8 },
+  { label: 'Migration / family moved', n: 2, pct: 3.8 },
+  { label: 'Health issue / disability', n: 1, pct: 1.9 },
+  { label: 'Other / unspecified', n: 30, pct: 56.6 },
+];
+
+const reg = [
+  ['Child is male', ['0.055*', '0.143*', '0.532***'], ['(0.028)', '(0.073)', '(0.181)']],
+  ['Distance to school', ['-0.074***', '-0.190***', '-0.342***'], ['(0.020)', '(0.051)', '(0.127)']],
+  ['Average education level of adults in the HH', ['0.019***', '0.050***', '0.179***'], ['(0.005)', '(0.014)', '(0.033)']],
+  ['Number of HH members', ['0.003', '0.008', '0.065'], ['(0.009)', '(0.024)', '(0.060)']],
+  ['Duration of stay in community', ['0.029**', '0.076**', '0.320***'], ['(0.015)', '(0.037)', '(0.093)']],
+  ['HH has mosquito net', ['-0.086', '-0.214', '-0.597'], ['(0.117)', '(0.306)', '(0.749)']],
+  ['HH has working light', ['-0.239**', '-0.641**', '-1.782***'], ['(0.099)', '(0.265)', '(0.632)']],
+  ['HH has toilet', ['0.076', '0.212', '-0.446'], ['(0.116)', '(0.311)', '(0.744)']],
+  ['Constant', ['0.405***', '-0.251', '-3.427***'], ['(0.110)', '(0.282)', '(0.700)']],
+] as const;
+---
+
+<Base title="Surveys & Research" description="Our 2020 community census of 1,495 households and our June 2026 household survey of 180 households in Yamuna Khadar, East Delhi.">
+  <PageHero
+    crumbs={[{ href: '/impact', label: 'Impact & Research' }]}
+    eyebrow="Surveys & research"
+    title="Understanding the community"
+    lede="Two surveys at two different scales: a door-to-door census of every household in 2020, and a focused household survey on children's schooling in June 2026."
+  />
+
+  <section class="section tight">
+    <div class="container prose">
+      <div class="callout">
+        <p>
+          <strong>Reading these numbers:</strong> the <a href="#census-2020">2020 community census</a> covered every
+          household within our survey boundaries (1,495 households, 6,385 individuals). The
+          <a href="#survey-2026">June 2026 household survey</a> is a smaller, more recent sample (180 households, 361
+          children). Counts from the two are not directly comparable.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2020 CENSUS ================= -->
+  <section class="section" id="census-2020" style="padding-top:8px">
+    <div class="container prose">
+      <p class="eyebrow">July 2020 · 1,495 households · 6,385 individuals</p>
+      <h2 style="margin-top:0">The 2020 community census</h2>
+
+      <h3>Motivation</h3>
+      <p>We decided that if we were going to work with a community, it was important to:</p>
+      <ol>
+        <li>
+          Define the boundaries clearly and get a sense of the total number of individuals and households living within
+          these boundaries. This would in-turn help the planning and logistics of any sub-project by answering questions
+          like: "How many mosquito nets should we procure?"
+        </li>
+        <li>
+          Understand some socio-demographic characteristics to brainstorm and target the most useful interventions. For
+          example, finding out if the community primarily comprises of young men living alone or of full families would
+          inform a very different set of interventions.
+        </li>
+      </ol>
+
+      <h3>What we did</h3>
+      <p>
+        We designed and conducted a <strong>short survey</strong> intended to capture basic details about <strong>every
+        household</strong> living within the defined boundaries. You can see these boundaries on the
+        <a href="/#community-map">homepage</a>.
+      </p>
+      <p>
+        Our local coordinator, Vikram, identified and trained 12 surveyors to go door-to-door and fill out a digital form
+        using SurveyCTO on their smartphones. You can view the form
+        <a href="https://www.dropbox.com/s/sqhaiphz4ehfrtl/listing_final_instrument.xlsx?dl=0"><strong>here</strong></a>.
+      </p>
+      <p>
+        The survey ran from 10th to 18th July, 2020 and covered 1495 households. Results from this data are presented
+        below.
+      </p>
+      <p>Before proceeding, it's worth flagging a few caveats and challenges faced during this exercise:</p>
+      <ul>
+        <li>
+          Coverage: While the survey was conducted after the nationwide Covid-19 lockdown was lifted, several migrant
+          households in the community that had travelled to their native villages had not returned. Our local
+          coordinator believes there are approximately 200 households like this, and it is unclear how many will return
+          in the coming months.
+        </li>
+        <li>
+          Data quality: The surveyors had no prior digital data collection experience. While the survey was simple,
+          there is a possibility that huts were missed or minor errors crept into data collection, particularly for
+          tricky questions such as identifying who counts as a household member. While surveyors were monitored closely
+          during data collection, conducting back-checks on the data was outside the scope of this activity and so it is
+          tough to quantify the magnitude of such errors. <em>That said, we remain confident that the data is good
+          enough to meet the purposes laid out above.</em>
+        </li>
+      </ul>
+
+      <h3>Household profile</h3>
+      <p>
+        In total, we found 1495 households, totalling 6385 individuals. The map below shows the spatial distribution of
+        households; there appear to be a few clear clusters closer to the Noida Link Road and Mayur Vihar-1, with
+        density decreasing closer to the river bank.
+      </p>
+      <p>Most households live in huts or shacks, as you will notice in the pictures on the <a href="/">home page</a>.</p>
+      <figure>
+        <img src="/images/research/fullmap.png" alt="Density map showing household locations clustered near Noida Link Road and Mayur Vihar-1" loading="lazy" />
+      </figure>
+      <p>
+        A large majority of those living here are living as families. The average household size is 4.3 members, with
+        only 108 single-member households.
+      </p>
+      <p>
+        This point is re-iterated when we observe the age distribution: <strong>46.2% of individuals are under the age
+        of 18!</strong>
+      </p>
+      <figure>
+        <img src="/images/research/hhsize.png" alt="Bar chart: distribution of household size, averaging 4.3 members" loading="lazy" />
+      </figure>
+
+      <h3>Education</h3>
+      <p>The data on education attainment paints a troubling picture.</p>
+      <figure>
+        <img src="/images/research/eduadult.png" alt="Bar chart: distribution of education levels among adults over 21" loading="lazy" />
+      </figure>
+      <p>
+        Of those over the age of 21, and thus likely to have completed their education, only 11% have passed 10th
+        standard. A majority have not even finished primary education.
+      </p>
+      <p>
+        What is arguably more concerning, is that this cycle of under-attainment seems to persist with children currently
+        of schoolgoing age. Based on age alone, the light blue bars in the graph below show the number of children
+        expected to have completed each grade level. It is cumulative, in the sense that a child aged 18 is expected to
+        have completed 1st - 12th grade. The dark blue bars show the number of children that have actually completed
+        these levels according to our survey.
+      </p>
+      <figure>
+        <img src="/images/research/edukid.png" alt="Bar chart: expected versus attained grade levels for children aged 7 to 18" loading="lazy" />
+      </figure>
+      <p>
+        While we may expect to see a gap in senior secondary levels (10-12), the gaps in primary and secondary education
+        of a magnitude around 300 children is surprising. This is backed up by anecdotal evidence on the ground: children
+        in the community may have dropped out to work in the fields or due to lack of interest, and despite now being old
+        enough for a higher grade, do not have the numeracy or literacy skills to re-enroll at those levels.
+        <strong>There is a clear need for remedial education to bring these kids back up to speed and re-enroll them in
+        schools.</strong> Below is a picture of one such informal effort in the community. The demand and need for
+        similar efforts is heightened due to the Covid-19 lockdown and related school closures.
+      </p>
+      <figure>
+        <img src="/images/community/teaching.jpeg" alt="An informal class for children in the community" loading="lazy" style="max-width:480px" />
+      </figure>
+      <p>
+        What factors drive these dropouts and the resulting shortfalls in education attainment? The regressions below try
+        and dig deeper into this question. It won't be possible to say anything causal given the limited fields we
+        collected (due to omitted variable bias), but it is an interesting descriptive exercise.
+      </p>
+      <p>
+        Below are models with two dependent variables. First, a binary variable on whether a child meets the level of
+        education we expect given their age (1 = yes, 0 = no). Second, a variable subtracting expected education level
+        from actual education level to capture the extent of shortfall. The dependent variables are constructed this way
+        because:
+      </p>
+      <ol>
+        <li>
+          Regressing education level directly would not account for the varying ages of the children. Both these
+          measures benchmark education levels to what we expect given their ages.
+        </li>
+        <li>
+          For both measures, we interpret positive coefficients as being associated with good outcomes; an increase in
+          the likelihood of meeting the expected level, or an increase in actual - expected education (i.e. less
+          shortfall)
+        </li>
+      </ol>
+      <p><strong>Regressions predicting education attainment of children aged 7-18</strong></p>
+      <div class="table-wrap">
+        <table class="reg">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="n" colspan="2">Whether child is at expected level (binary)</th>
+              <th class="n">Difference between actual and expected level</th>
+            </tr>
+            <tr>
+              <th></th><th class="n">OLS</th><th class="n">probit</th><th class="n">OLS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {reg.map(([label, coef, se]) => (
+              <>
+                <tr>
+                  <td style="border-bottom:none">{label}</td>
+                  {coef.map((c) => <td class="n" style="border-bottom:none">{c}</td>)}
+                </tr>
+                <tr>
+                  <td></td>
+                  {se.map((s) => <td class="n se">{s}</td>)}
+                </tr>
+              </>
+            ))}
+            <tr><td>Observations</td><td class="n">1,239</td><td class="n">1,239</td><td class="n">1,239</td></tr>
+            <tr><td>R²</td><td class="n">0.036</td><td class="n"></td><td class="n">0.053</td></tr>
+            <tr><td>F Statistic (df = 8; 1230)</td><td class="n">5.662***</td><td class="n"></td><td class="n">8.570***</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.85rem;color:var(--muted);margin-top:8px">Note: *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</p>
+      </div>
+      <p>
+        As expected, the explanatory power of these models are low (R-squared = 3-5%) given the limited variables
+        collected. A summary of the key findings from the variables we do have are as follows:
+      </p>
+      <ul>
+        <li>
+          <strong style="color:#8b1a1a">Greater distance from the child's household to the nearest school has a
+          significant negative association</strong> Distance was calculated as the Euclidean distance (straight line)
+          from the lat-long of the household to the lat-long of the nearest school, so is likely to be lower than the
+          actual travel path but is a decent proxy. This measure ranges from 0.6km to 3.4km, so it is plausible that
+          children to the right tail of this distribution might be reluctant to walk these distances.
+        </li>
+        <li>
+          <strong style="color:#1d6b2a">Higher average education level of adults in the household has a significant
+          positive association</strong> This persistence across generations/older-to-younger siblings makes intuitive
+          sense, even if the exact channels are unclear.
+        </li>
+        <li>
+          <strong style="color:#8b1a1a">While male and female children are both similarly likely to not match up to the
+          expected education level, males are still 0.5 school years closer than females on average</strong>
+        </li>
+        <li>
+          <strong style="color:#1d6b2a">Children that have been living in the same community for a longer period of time
+          have better outcomes.</strong> This also makes intuitive sense; migrant households that move frequently may
+          find it difficult to enroll and keep their children in these schools.
+        </li>
+        <li>
+          <strong style="color:#3d5555">Factors like household size or access to mosquito nets have no significant
+          association</strong>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= 2026 SURVEY ================= -->
+  <section class="section alt" id="survey-2026">
+    <div class="container prose">
+      <p class="eyebrow">June 2026 · 180 households · 361 children</p>
+      <h2 style="margin-top:0">Household Survey, June 2026</h2>
+      <p>
+        180 households surveyed (169 fully completed, 94%), covering 361 children. Following the survey, we called
+        families to identify the 28 children in our current <a href="/programs">NIOS bridge-education pilot</a>.
+      </p>
+
+      <h3>Schooling status (all 361 children)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Status</th><th class="n">n</th><th class="n">%</th><th></th></tr></thead>
+          <tbody>
+            {schooling.map((r) => (
+              <tr><td>{r.label}</td><td class="n">{r.n}</td><td class="n">{Number(r.pct).toFixed(1)}</td>
+              <td class="barcell"><span class="bar" style={`width:${r.pct}%`}></span></td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Dropout analysis (n=53)</h3>
+      <p>Average age at dropout: 7.6 years (median 6)</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Main reason for dropout</th><th class="n">n</th><th class="n">%</th><th></th></tr></thead>
+          <tbody>
+            {dropout.map((r) => (
+              <tr><td>{r.label}</td><td class="n">{r.n}</td><td class="n">{Number(r.pct).toFixed(1)}</td>
+              <td class="barcell"><span class="bar" style={`width:${r.pct}%`}></span></td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Household demographics</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Category</th><th class="n">n</th><th class="n">%</th></tr></thead>
+          <tbody>
+            {demographics.map((r) => (
+              <tr><td>{r.label}</td><td class="n">{r.n}</td><td class="n">{r.pct}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Monthly household income</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Bracket</th><th class="n">n</th><th class="n">%</th><th></th></tr></thead>
+          <tbody>
+            {income.map((r) => (
+              <tr><td>{r.label}</td><td class="n">{r.n}</td><td class="n">{Number(r.pct).toFixed(1)}</td>
+              <td class="barcell"><span class="bar" style={`width:${r.pct}%`}></span></td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Government scheme access</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Scheme</th><th class="n">Coverage</th><th></th></tr></thead>
+          <tbody>
+            {schemes.map((r) => (
+              <tr><td>{r.label}</td><td class="n">{Number(r.pct).toFixed(1)}%</td>
+              <td class="barcell"><span class="bar" style={`width:${r.pct}%`}></span></td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+# Pre-commit hook: when English pages under src/pages/ are staged, ask Claude Code (headless, using your normal
+# Claude login) to bring the matching Hindi pages under src/pages/hi/ in line, then stage those Hindi files so they
+# go into the same commit.
+#
+#   Skip once:      SKIP_HINDI=1 git commit ...     (or git commit --no-verify)
+#   Preview only:   DRY_RUN=1 .githooks/pre-commit  (lists the pages it would check, runs nothing)
+#   Enable:         git config core.hooksPath .githooks   (already done in this repo)
+#
+#   In a terminal it asks: [u] update Hindi with Claude Code, [y] I checked it, [n] cancel.
+#   With no terminal (e.g. VS Code commit button) it runs the Claude Code update automatically.
+
+set -euo pipefail
+
+[ "${SKIP_HINDI:-0}" = "1" ] && exit 0
+
+cd "$(git rev-parse --show-toplevel)"
+
+# Staged English pages (added or modified), excluding the Hindi mirrors themselves.
+changed=$(git diff --cached --name-only --diff-filter=AM -- 'src/pages/*.astro' 'src/pages/**/*.astro' \
+  | grep -v '^src/pages/hi/' || true)
+
+[ -z "$changed" ] && exit 0
+
+pairs=""
+mirrors=()
+for f in $changed; do
+  hi="src/pages/hi/${f#src/pages/}"
+  mirrors+=("$hi")
+  pairs+="- $f  ->  $hi"$'\n'
+done
+
+echo "hindi-sync: English pages changed:"
+printf '%s' "$pairs"
+
+if [ "${DRY_RUN:-0}" = "1" ]; then
+  echo "hindi-sync: dry run, nothing translated."
+  exit 0
+fi
+
+prompt="You are keeping the Hindi version of this Astro site in sync with the English version.
+
+Read TRANSLATION.md first and follow its rules and glossary exactly.
+
+These English pages have staged changes, each paired with its Hindi mirror:
+$pairs
+For each pair:
+1. Run \`git diff --cached -- <english file>\` to see exactly what changed in English, and read the full staged English file.
+2. Read the Hindi mirror (it may not exist yet).
+3. If the Hindi page already matches the English content, leave it untouched.
+4. Otherwise, edit the Hindi page so it matches: translate only the changed or new parts and remove parts that were removed. Do not rewrite untouched Hindi text. If the mirror does not exist, create it as a full translation.
+
+Only edit files under src/pages/hi/. Do not touch English files, layouts, components, styles or git state.
+Finish with one line per page: 'updated', 'created' or 'already in sync'."
+
+run_claude() {
+  if ! command -v claude >/dev/null 2>&1; then
+    echo "hindi-sync: 'claude' CLI not found. Install Claude Code, or commit with SKIP_HINDI=1." >&2
+    exit 1
+  fi
+  echo "hindi-sync: asking Claude Code to check the Hindi pages (this can take a minute or two)..."
+  if ! claude -p "$prompt" \
+      --permission-mode acceptEdits \
+      --allowedTools "Read" "Edit" "Write" "Glob" "Grep" "Bash(git diff:*)"; then
+    echo "hindi-sync: Claude Code failed; commit aborted. Retry, or commit with SKIP_HINDI=1." >&2
+    exit 1
+  fi
+  # Stage whichever Hindi mirrors now exist so they land in this commit.
+  for hi in "${mirrors[@]}"; do
+    [ -f "$hi" ] && git add -- "$hi"
+  done
+  echo "hindi-sync: Hindi changes staged:"
+  git diff --cached --stat -- "${mirrors[@]}" 2>/dev/null || true
+}
+
+# No terminal (e.g. committing from the VS Code Source Control panel): can't ask, so update automatically.
+if ! [ -t 1 ] || ! { exec 3</dev/tty; } 2>/dev/null; then
+  run_claude
+  exit 0
+fi
+
+echo
+echo "Is the Hindi version up to date for these pages?"
+echo "  [u] Update the Hindi pages with Claude Code, then commit"
+echo "  [y] Yes, I've checked the Hindi pages myself; commit as is"
+echo "  [n] No, cancel the commit so I can fix it"
+while true; do
+  printf "Choose u / y / n: "
+  read -r answer <&3 || answer=n
+  case "$answer" in
+    u|U) run_claude
+         printf "Commit with these Hindi changes? [y/N]: "
+         read -r ok <&3 || ok=n
+         [[ "$ok" =~ ^[yY]$ ]] && exit 0
+         echo "hindi-sync: commit cancelled. The Hindi edits are staged; review with: git diff --cached src/pages/hi" >&2
+         exit 1 ;;
+    y|Y) exit 0 ;;
+    n|N) echo "hindi-sync: commit cancelled." >&2; exit 1 ;;
+  esac
+done

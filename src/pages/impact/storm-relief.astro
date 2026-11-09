@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+---
+
+<Base title="Storm Relief">
+  <PageHero
+    crumbs={[{ href: '/impact', label: 'Impact & Research' }]}
+    eyebrow="Relief campaign · June 2020"
+    title="Storm Relief"
+    lede="Waterproof tarpaulins for 121 families to rebuild their homes."
+  />
+
+  <section class="section">
+    <div class="container prose">
+      <h2>The issue</h2>
+      <p>
+        In the first week of June 2020, Delhi was hit by a deluge of heavy rain and wind. Given the type of temporary
+        housing structures found in this community, it isn't surprising that this had a devastating effect for several
+        families:
+      </p>
+    </div>
+    <div class="container">
+      <div class="photos tall">
+        <img src="/images/storm/before1.jpeg" alt="A hut damaged by the June 2020 storm" loading="lazy" />
+        <img src="/images/storm/before3.jpeg" alt="A hut damaged by the June 2020 storm" loading="lazy" />
+        <img src="/images/storm/before4.jpeg" alt="Storm damage to homes in the community" loading="lazy" />
+      </div>
+    </div>
+    <div class="container prose">
+      <h2>What we did</h2>
+      <p>
+        To help families rebuild their destroyed huts, we purchased large waterproof tarpaulins to place on the thatched
+        roofs. These tarps would not only help protect the homes from wind and rain, but also serve a purpose during the
+        harsh summers by blocking out sunlight.
+      </p>
+      <p>
+        <strong>Each tarp cost INR 1,032, and we were able to raise enough to help 121 families (INR 1,24,870 in
+        total).</strong> Below are some pics of the distribution:
+      </p>
+    </div>
+    <div class="container">
+      <div class="photos tall">
+        <img src="/images/storm/after1.jpeg" alt="A family with a new tarpaulin" loading="lazy" />
+        <img src="/images/storm/after2.jpeg" alt="Tarpaulins placed on the roofs of huts" loading="lazy" />
+        <img src="/images/storm/after3.jpeg" alt="Tarpaulins placed on the roofs of huts" loading="lazy" />
+      </div>
+    </div>
+  </section>
+</Base>

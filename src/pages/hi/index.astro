@@ -1,0 +1,148 @@
+---
+import Base from '../../layouts/Base.astro';
+import CommunityMap from '../../components/CommunityMap.astro';
+
+const MILAAP = 'https://milaap.org/fundraisers/support-childen-who-have-dropped-out-of-school';
+const gallery = [1, 2, 3, 4, 5, 6].map((i) => `/images/community/gallery${i}.jpeg`);
+---
+
+<Base title="मुख्य पृष्ठ">
+  <section class="hero" style="--hero-img: url('/images/community/kids_learning.jpeg')">
+    <div class="container">
+      <div class="inner">
+        <p class="eyebrow">यमुना खादर · पूर्वी दिल्ली</p>
+        <h1>नवयुग संस्कृति फ़ाउंडेशन</h1>
+        <p>
+          हम एक ज़मीनी स्तर की गैर-लाभकारी संस्था हैं, जो यमुना किनारे की "झुग्गियों" में रहने वाले प्रवासी परिवारों के साथ काम करती है, ताकि उनके बच्चों की पढ़ाई चलती रहे — तब भी, जब पलायन, आपदाएँ या पैसों की तंगी उन्हें पढ़ाई से दूर खींच लें।
+        </p>
+        <div class="btn-row">
+          <a class="btn accent" href="/hi/donate">दान करें</a>
+          <a class="btn ghost" href="/hi/about#our-story">हमारी कहानी</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">समस्या</p>
+      <p class="statement">
+        इन बस्तियों के बच्चे इसलिए स्कूल कम ही छोड़ते हैं कि उनका पढ़ने का मन नहीं रहा।
+        <span class="soft">वे इसलिए छोड़ते हैं क्योंकि उनकी ज़िंदगी में उथल-पुथल आ जाती है। गाँवों से आने वाले परिवारों के पास अक्सर
+        वह पते का सबूत और दस्तावेज़ नहीं होते जो शहर के स्कूल माँगते हैं। बाढ़ या तोड़फोड़ की वजह से जिन परिवारों को गाँव लौटना पड़ता है,
+        उनके बच्चों का स्कूल साल के बीच में ही छूट जाता है। और जब पैसों की कमी होती है, तो घर की कमाई में हाथ बँटाने के लिए बच्चों की ज़रूरत पड़ती है।</span>
+      </p>
+      <div class="mission">
+        <p class="eyebrow">हमारा मिशन</p>
+        <p class="mission-text">
+          यह पक्का करना कि इन सब दबावों के बीच भी बच्चे पढ़ते रहें — ओपन स्कूलिंग, दस्तावेज़ बनवाने में मदद,
+          ब्रिज शिक्षा, काउंसलिंग और अपने ही समुदाय के रोल मॉडल के ज़रिए।
+        </p>
+        <a href="/hi/programs">हमारा तरीका →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="split">
+        <div class="prose">
+          <p class="eyebrow">हमारी कहानी</p>
+          <h2 style="margin-top:0">समुदाय से गहरा जुड़ाव</h2>
+          <p>
+            हमारे संस्थापक विक्रम सिंह 2013 में उत्तर प्रदेश के अपने गाँव से पढ़ाई के लिए दिल्ली आए। B.A. करते समय वे यमुना किनारे की इन्हीं झुग्गियों में रहे। उन्होंने अपने आस-पास बच्चों का
+            स्कूल छूटते देखा, और उन्हें पढ़ाना शुरू कर दिया। तब से 13 साल हो गए, और वे जिस भी रूप में हो सका, यह काम करते रहे हैं:
+            मुफ़्त कक्षाएँ, फ़्लाईओवर के नीचे एक स्कूल, आपदा राहत के कई काम और दस्तावेज़ बनवाने के अभियान।
+          </p>
+          <p>
+            नवयुग संस्कृति फ़ाउंडेशन इसी काम को एक औपचारिक रूप देता है। विक्रम और सह-संस्थापक सृष्टि वर्मा — एक वकील, जो उनके साथ
+            पढ़ाती थीं — के साथ अब मिहिर भास्कर और स्मिता कुनिगल भी जुड़े हैं, जो पब्लिक पॉलिसी के रिसर्चर हैं और जिन्हें कार्यक्रम बनाने
+            और उनका मूल्यांकन करने का अनुभव है। हम मिलकर यह काम एक स्थिर आधार से चलाना चाहते हैं, यह मापना चाहते हैं कि
+            यह कितना काम कर रहा है, और जो सीखें उसे दूसरों के साथ बाँटना चाहते हैं।
+          </p>
+          <p><a href="/hi/about#our-story">हमारी पूरी कहानी पढ़ें →</a></p>
+        </div>
+        <!-- Video slot: replace this image with the video of Vikram and the team talking about the work once it is ready. -->
+        <img src="/images/community/teaching.jpeg" alt="यमुना खादर में एक अनौपचारिक कक्षा के लिए इकट्ठा हुए बच्चे" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">हम कहाँ काम करते हैं</p>
+      <h2 style="margin-top:0;max-width:820px">मयूर विहार फ़ेज़-1, दिल्ली में यमुना नदी के किनारे की बस्तियाँ</h2>
+      <div class="prose">
+        <p>
+          2020 में हमारी जनगणना (सर्वे) में इन बस्तियों में रहने वाले <span class="hl">लगभग 1,500 परिवार</span> (6,385 लोग) दर्ज हुए।
+          हमारा अनुमान था कि यहाँ <span class="hl">400 से ज़्यादा बच्चे</span> ऐसे थे जो या तो कभी स्कूल नहीं गए
+          या जिनकी पढ़ाई छूट गई थी। बाढ़ और डीडीए की तोड़फोड़ की कार्रवाइयाँ यहाँ के परिवारों को बार-बार उजाड़ देती हैं, और हर
+          बार घर बदलने पर बच्चे की पढ़ाई रुक सकती है। <a href="/hi/about#yamuna-khadar">इस इलाके के बारे में और जानें →</a>
+        </p>
+        <p>
+          नीचे दिए नक्शे पर नीले रंग में वे इलाके दिखाए गए हैं जिन पर हम ध्यान दे रहे हैं, और तस्वीरों से आपको
+          अंदाज़ा मिलेगा कि 'ज़मीन पर' हालात कैसे हैं।
+        </p>
+      </div>
+      <CommunityMap />
+      <div class="photos">
+        {gallery.map((src) => <img src={src} alt="यमुना खादर, मयूर विहार फ़ेज़-1 की बस्ती में घर" loading="lazy" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">और जानें</p>
+      <div class="cards four">
+        <a class="card" href="/hi/programs">
+          <img src="/images/nets/dist3.jpeg" alt="समुदाय में काम करती हमारी टीम" loading="lazy" />
+          <div class="body">
+            <h3>हमारा तरीका</h3>
+            <p>राष्ट्रीय मुक्त विद्यालयी शिक्षा संस्थान (NIOS) के ज़रिए ओपन स्कूलिंग, दस्तावेज़ बनवाने में मदद, ब्रिज शिक्षा, रोल मॉडल और हुनर की ट्रेनिंग।</p>
+            <span class="more">और जानें →</span>
+          </div>
+        </a>
+        <a class="card" href="/hi/impact/surveys-and-research">
+          <img src="/images/research/fullmap.png" alt="2020 के सामुदायिक सर्वे से घरों की जगहों का नक्शा" loading="lazy" />
+          <div class="body">
+            <h3>सर्वे और रिसर्च</h3>
+            <p>जिस समुदाय के लिए हम काम करते हैं उसे बेहतर समझने, अपने कार्यक्रमों के लिए लाभार्थियों को पहचानने, और यह जाँचने के लिए कि हमारे कार्यक्रम कैसा काम कर रहे हैं।</p>
+            <span class="more">नतीजे देखें →</span>
+          </div>
+        </a>
+        <a class="card" href="/hi/impact#relief">
+          <img src="/images/nets/dist1.jpeg" alt="एक निवासी को मच्छरदानी दी जा रही है" loading="lazy" />
+          <div class="body">
+            <h3>राहत और वितरण</h3>
+            <p>तुरंत की ज़रूरतों को खास अभियानों से पूरा करना — जैसे बरसात में मच्छरदानियाँ बाँटना, तूफ़ान राहत के लिए तिरपाल, और राशन सहायता।</p>
+            <span class="more">हमारा असर →</span>
+          </div>
+        </a>
+        <a class="card" href="/hi/stories">
+          <img src="/images/community/gallery4.jpeg" alt="यमुना खादर में घर" loading="lazy" />
+          <div class="body">
+            <h3>कहानियाँ</h3>
+            <p>इस समुदाय के युवा, जो पढ़ाई में लौटे और आगे चलकर काम करने लगे।</p>
+            <span class="more">उनकी कहानियाँ पढ़ें →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container"><div class="prose">
+      <p class="eyebrow">मौजूदा पायलट</p>
+      <h2 style="margin-top:0">28 बच्चों को फिर से पढ़ाई से जोड़ने में मदद करें</h2>
+      <p>
+        हमने ऐसे 28 बच्चों की पहचान की है जिनकी पढ़ाई जल्दी छूट गई, जो पढ़ना चाहते हैं, और जिनके परिवार पढ़ाई में लौटने में
+        उनका साथ देने को तैयार हैं। हम उन्हें पढ़ाने, मार्गदर्शन देने और सहारा देने के लिए पैसे जुटा रहे हैं।
+      </p>
+      <div class="btn-row">
+        <a class="btn accent" href={MILAAP}>Milaap पर दान करें</a>
+        <a class="btn ghost" href="/hi/stories">हमारी कहानियाँ पढ़ें</a>
+      </div>
+    </div></div>
+  </section>
+</Base>

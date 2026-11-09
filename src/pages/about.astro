@@ -1,0 +1,135 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+
+const src = {
+  maktoob2024: 'https://maktoobmedia.com/post?id=91991&slug=4000-migrant-families-in-delhis-mayur-vihar-surviving-floods-muddy-winds-became-homeless-in-a-day',
+  maktoob2026: 'https://maktoobmedia.com/post?id=116552&slug=homes-demolished-names-missing-from-voter-rolls-chilla-khadar-families-face-displacement-amid-delhi-sir',
+  rubble2023: 'https://thepatriot.in/reports/rising-from-the-rubble-33882',
+  patriot2023: 'https://thepatriot.in/cover-story/schools-submerged-studies-take-a-hit-38550',
+  iwp2025: 'https://www.indiawaterportal.org/rivers-and-lakes/displacement/who-owns-the-yamuna-floodplain-migrant-farmers-landlords-or-the-dda',
+};
+---
+
+<Base title="About Us">
+  <PageHero eyebrow="About us" title="Who we are" />
+
+  <section class="section">
+    <div class="container">
+      <div class="split">
+        <div class="prose">
+          <p>
+            Navyug Sanskriti Foundation (NSF) is a grassroots non-profit working with one of East Delhi's most
+            underserved communities - the migrant settlements along the Yamuna floodplain. Most families are first- and
+            second-generation migrants from rural Uttar Pradesh, Bihar, Madhya Pradesh, and Haryana.
+          </p>
+          <h2 id="yamuna-khadar">Yamuna Khadar</h2>
+          <p>
+            Yamuna Khadar is the stretch of the Yamuna floodplain beside Mayur Vihar Phase-I and Chilla Khadar. Most
+            families here farm vegetables and nursery plants on leased land, or do daily-wage and domestic work
+            (<a href={src.iwp2025}>India Water Portal, 2025</a>). Because the floodplain allows no permanent construction,
+            homes are jhuggis of tarpaulin and bamboo (<a href={src.maktoob2024}>Maktoob, 2024</a>).
+          </p>
+          <p>
+            Floods (<a href={src.patriot2023}>July 2023</a>, <a href={src.iwp2025}>August–September 2025</a>) regularly
+            push families into roadside relief camps, and DDA demolition drives
+            (<a href={src.maktoob2024}>July 2024</a>, <a href={src.iwp2025}>April 2025</a>,
+            <a href={src.maktoob2026}>September 2026</a>) have repeatedly cleared homes, farms, and learning spaces. Each
+            of these moves is a point where a child's schooling can stop.
+          </p>
+        </div>
+        <img src="/images/community/gallery1.jpeg" alt="Jhuggis under the flyover in Yamuna Khadar" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container prose">
+      <h2 style="margin-top:0">Mission</h2>
+      <p>
+        <strong>Our mission:</strong> To ensure that children in rural-urban migrant families successfully complete their education, build resilience in the face of frequent pressures to drop out, and go on to find stable work.
+      </p>
+      <h3 id="problem">The problem we focus on</h3>
+      <p>In Yamuna Khadar, some primary causes of school dropouts are:</p>
+      <ul>
+        <li>
+          <strong>Arriving in Delhi:</strong> families moving from villages often lack the address proof and other
+          documents urban schools require, so children who were studying in the village never enrol in the city.
+        </li>
+        <li>
+          <strong>Sudden returns:</strong> when floods, demolitions, or other crises push families back to the village,
+          children leave school mid-year and often don't go back.
+        </li>
+        <li><strong>Income pressure:</strong> children are needed to earn or help at home.</li>
+      </ul>
+      <p>Once a child has fallen behind, getting back in is hard. <a href="/programs">See how we work →</a></p>
+    </div>
+  </section>
+
+  <section class="section" id="our-story">
+    <div class="container prose">
+      <h2 style="margin-top:0">Our story</h2>
+      <p>
+        Vikram Singh came to Delhi from his village in Uttar Pradesh in 2013 to study. He
+        lived in the jhuggis in Mayur Vihar, completing a B.A. at Delhi University while living there, and later a B.Ed.
+        and an M.A. through IGNOU.
+      </p>
+      <p>
+        Living in the jhuggis, he saw two things. First, how many children had dropped out of school, with no clear way
+        back in and little motivation to study; most were expected to help their parents with field work. Second, the
+        potential of open schooling (NIOS) as a route back in. Alongside his own studies, he began teaching
+        children for free, and went on to help run Vanphool Pathshala, a free school for children in Yamuna Khadar,
+        which by 2020 was running classes under the flyover and reaching nearly 300 children. Shrishti Verma, now our
+        co-founder, taught there with him.
+      </p>
+      <p>
+        In 2020, during the Covid-19 lockdown, Mihir Bhaskar, then working in data and public policy research, was
+        volunteering to match funds with relief efforts on the ground and got in touch with Vikram. This started a
+        collaboration on short-term needs (<a href="/impact/storm-relief">storm-relief tarpaulins</a>,
+        <a href="/impact/mosquito-nets">mosquito nets before the monsoon</a>, ration support) and on longer-term
+        planning, including a <a href="/impact/surveys-and-research">census of every household</a> to understand the
+        community and shape interventions.
+      </p>
+      <p>
+        These efforts kept being interrupted. Floods displaced families, and DDA demolition drives repeatedly cleared the
+        settlements (<a href={src.maktoob2024}>Maktoob, 2024</a>; <a href={src.maktoob2026}>Maktoob, 2026</a>). In 2023,
+        Vanphool Pathshala was demolished by the Public Works Department (<a href={src.rubble2023}>"Rising from the rubble", The Patriot, 2023</a>). It became clear the work needed a stable centre close to the
+        community, where children can come to learn and families can get help with documentation, and a more systematic
+        way of running it.
+      </p>
+      <p>
+        Navyug Sanskriti Foundation was registered in December 2024 to do this, and Mihir brought in Smitha Cunigal as
+        it took shape. Vikram brings deep ties to the community and years of teaching its children; Shrishti handles the
+        legal and documentation work; Mihir and Smitha bring experience in program design, data collection, and
+        evaluation, and in connecting this work to wider research and policy. The foundation is a way to systematise,
+        fund, and share the work Vikram has been doing for over a decade.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="/team">Meet the team</a>
+        <a class="btn ghost" href="/impact">Our impact</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container prose">
+      <h2 style="margin-top:0">Legal &amp; registration status</h2>
+      <dl class="facts">
+        <dt>Registration</dt>
+        <dd>Public Charitable Trust under the Indian Trusts Act, 1882 — Registration No. 2024/4/IV/2147, registered 26 December 2024, Delhi</dd>
+        <dt>PAN</dt>
+        <dd>AAETN8217A</dd>
+        <dt>12A</dt>
+        <dd>Income-tax exemption for the Trust (provisional) — Unique Registration No. AAETN8217AE20251, granted 10 May 2025, valid AY 2026-27 to AY 2028-29</dd>
+        <dt>80G</dt>
+        <dd>Tax deduction for Indian donors (provisional) — Unique Registration No. AAETN8217AF20251, granted 10 May 2025, valid AY 2026-27 to AY 2028-29</dd>
+        <dt>CSR-1</dt>
+        <dd>Eligible to receive corporate CSR funding — Registration No. CSR00113586, dated 27 June 2026</dd>
+        <dt>NGO Darpan</dt>
+        <dd>DL/2025/0575004, registered 24 March 2025</dd>
+        <dt>Registered office</dt>
+        <dd>725/1, First Floor, Jheel Khuranja, Krishna Nagar, Govind Pura, Shahdara, East Delhi, Delhi – 110051</dd>
+      </dl>
+    </div>
+  </section>
+</Base>

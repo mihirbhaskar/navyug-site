@@ -1,0 +1,155 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const hi = path === '/hi' || path.startsWith('/hi/');
+const lang = hi ? 'hi' : 'en';
+const enPath = hi ? path.replace(/^\/hi/, '') || '/' : path;
+const altHref = hi ? enPath : enPath === '/' ? '/hi' : `/hi${enPath}`;
+const L = (href: string) => (hi ? (href === '/' ? '/hi' : `/hi${href}`) : href);
+
+const t = hi
+  ? {
+      brand: 'नवयुग संस्कृति फ़ाउंडेशन',
+      desc: 'नवयुग संस्कृति फ़ाउंडेशन पूर्वी दिल्ली में यमुना के किनारे रहने वाले प्रवासी परिवारों के साथ काम करने वाली एक ज़मीनी गैर-लाभकारी संस्था है, ताकि पलायन, बाढ़ और घर की आर्थिक तंगी के बावजूद उनके बच्चों की पढ़ाई जारी रह सके।',
+      about: 'हमारे बारे में', programs: 'हमारे कार्यक्रम', impact: 'प्रभाव और शोध', overview: 'सारांश',
+      surveys: 'सर्वे और शोध', nets: 'मच्छरदानी वितरण', storm: 'तूफ़ान राहत', team: 'हमारी टीम',
+      stories: 'कहानियाँ', contact: 'संपर्क', donate: 'दान करें', menu: 'मेनू',
+      footerAbout: 'पूर्वी दिल्ली में यमुना के किनारे प्रवासी परिवारों के साथ काम करने वाली एक ज़मीनी गैर-लाभकारी संस्था।',
+      explore: 'देखें', touch: 'संपर्क करें',
+      fAbout: 'हमारे बारे में', fPrograms: 'हमारे कार्यक्रम', fImpact: 'प्रभाव और शोध', fStories: 'कहानियाँ', fTeam: 'हमारी टीम',
+      fine: 'भारतीय न्यास अधिनियम, 1882 के तहत सार्वजनिक धर्मार्थ न्यास के रूप में पंजीकृत (पंजीकरण सं. 2024/4/IV/2147) · 12A और 80G पंजीकृत · CSR-1: CSR00113586 · NGO दर्पण: DL/2025/0575004',
+      toggle: 'English', toggleLang: 'en',
+    }
+  : {
+      brand: 'Navyug Sanskriti Foundation',
+      desc: 'Navyug Sanskriti Foundation is a grassroots non-profit working with migrant families along the Yamuna floodplain in East Delhi, so that their children can continue their education through migration, floods, and financial pressure at home.',
+      about: 'About', programs: 'Our Programs', impact: 'Impact & Research', overview: 'Overview',
+      surveys: 'Surveys & research', nets: 'Mosquito net distribution', storm: 'Storm relief', team: 'Our Team',
+      stories: 'Stories', contact: 'Contact', donate: 'Donate', menu: 'Menu',
+      footerAbout: 'A grassroots non-profit working with migrant families along the Yamuna floodplain in East Delhi.',
+      explore: 'Explore', touch: 'Get in touch',
+      fAbout: 'About us', fPrograms: 'Our programs', fImpact: 'Impact & research', fStories: 'Stories', fTeam: 'Our team',
+      fine: 'Registered as a Public Charitable Trust under the Indian Trusts Act, 1882 (Reg. No. 2024/4/IV/2147) · 12A & 80G registered · CSR-1: CSR00113586 · NGO Darpan: DL/2025/0575004',
+      toggle: 'हिंदी', toggleLang: 'hi',
+    };
+
+const { title, description = t.desc } = Astro.props;
+const fullTitle = title === 'Home' || title === 'मुख्य पृष्ठ' ? t.brand : `${title} — ${t.brand}`;
+
+const links = [
+  { href: L('/about'), label: t.about },
+  { href: L('/programs'), label: t.programs },
+];
+const impactLinks = [
+  { href: L('/impact'), label: t.overview },
+  { href: L('/impact/surveys-and-research'), label: t.surveys },
+  { href: L('/impact/mosquito-nets'), label: t.nets },
+  { href: L('/impact/storm-relief'), label: t.storm },
+];
+const moreLinks = [
+  { href: L('/team'), label: t.team },
+  { href: L('/stories'), label: t.stories },
+  { href: L('/contact'), label: t.contact },
+];
+const current = (href: string) => (path === href ? 'page' : undefined);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="alternate" hreflang={t.toggleLang} href={altHref} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{fullTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Serif+Devanagari:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href={L('/')} class="brand">
+          <strong>{t.brand}</strong>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">☰ {t.menu}</button>
+        <nav class="nav" id="site-nav">
+          {links.map((l) => <a href={l.href} aria-current={current(l.href)}>{l.label}</a>)}
+          <details class="dropdown">
+            <summary>{t.impact}</summary>
+            <div class="dropdown-menu">
+              {impactLinks.map((l) => <a href={l.href} aria-current={current(l.href)}>{l.label}</a>)}
+            </div>
+          </details>
+          {moreLinks.map((l) => <a href={l.href} aria-current={current(l.href)}>{l.label}</a>)}
+          <a href={altHref} class="lang-toggle" lang={t.toggleLang} hreflang={t.toggleLang}>{t.toggle}</a>
+          <a href={L('/donate')} class="btn accent">{t.donate}</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h4>{t.brand}</h4>
+            <p>{t.footerAbout}</p>
+            <p>725/1, First Floor, Jheel Khuranja, Krishna Nagar, Govind Pura, Shahdara, East Delhi, Delhi – 110051</p>
+          </div>
+          <div>
+            <h4>{t.explore}</h4>
+            <ul>
+              <li><a href={L('/about')}>{t.fAbout}</a></li>
+              <li><a href={L('/programs')}>{t.fPrograms}</a></li>
+              <li><a href={L('/impact')}>{t.fImpact}</a></li>
+              <li><a href={L('/stories')}>{t.fStories}</a></li>
+              <li><a href={L('/team')}>{t.fTeam}</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>{t.touch}</h4>
+            <ul>
+              <li><a href="tel:+919582081405">+91 95820 81405</a></li>
+              <li><a href="tel:+917042777239">+91 70427 77239</a></li>
+              <li><a href="mailto:srishtimalik3011@gmail.com">srishtimalik3011@gmail.com</a></li>
+              <li><a href={L('/donate')}>{t.donate}</a></li>
+            </ul>
+          </div>
+        </div>
+        <p class="fine">{t.fine}</p>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+      const nav = document.getElementById('site-nav');
+      toggle?.addEventListener('click', () => {
+        const open = nav?.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(!!open));
+      });
+      // Close the Impact dropdown when clicking elsewhere (desktop)
+      document.addEventListener('click', (e) => {
+        document.querySelectorAll('details.dropdown[open]').forEach((d) => {
+          if (!d.contains(e.target as Node)) d.removeAttribute('open');
+        });
+      });
+    </script>
+  </body>
+</html>

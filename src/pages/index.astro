@@ -1,16 +1,148 @@
 ---
+import Base from '../layouts/Base.astro';
+import CommunityMap from '../components/CommunityMap.astro';
+
+const MILAAP = 'https://milaap.org/fundraisers/support-childen-who-have-dropped-out-of-school';
+const gallery = [1, 2, 3, 4, 5, 6].map((i) => `/images/community/gallery${i}.jpeg`);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="Home">
+  <section class="hero" style="--hero-img: url('/images/community/kids_learning.jpeg')">
+    <div class="container">
+      <div class="inner">
+        <p class="eyebrow">Yamuna Khadar · East Delhi</p>
+        <h1>Navyug Sanskriti Foundation</h1>
+        <p>
+          We are a grassroots non-profit working with migrant families in "jhuggis" along the Yamuna to ensure their children continue education — even when migration, disasters, or financial pressures pull them away.
+        </p>
+        <div class="btn-row">
+          <a class="btn accent" href="/donate">Donate</a>
+          <a class="btn ghost" href="/about#our-story">Our story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">The problem</p>
+      <p class="statement">
+        Children in these settlements rarely leave school because they stop wanting to learn.
+        <span class="soft">They leave because their lives get disrupted. Families arriving from villages often lack the
+        address proof and documents that city schools ask for. Families forced back to the village by floods or
+        demolitions leave school behind mid-year. And when money is short, children are needed to help support household income.</span>
+      </p>
+      <div class="mission">
+        <p class="eyebrow">Our mission</p>
+        <p class="mission-text">
+          To ensure children can continue learning through all of these pressures, using open schooling,
+          documentation support, bridge teaching, counseling, and role models from within their community.
+        </p>
+        <a href="/programs">Our approach →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="split">
+        <div class="prose">
+          <p class="eyebrow">Our story</p>
+          <h2 style="margin-top:0">Deep ties to the community</h2>
+          <p>
+            Our founder, Vikram Singh, came to Delhi from his village in Uttar Pradesh in 2013 to study. He lived in these very jhuggis along the Yamuna while completing his B.A. He saw children around him drop out of
+            school, and began teaching them. For the 13 years since, he has kept at it in whatever form he
+            could: free classes, a school under the flyover, various disaster relief efforts and documentation drives.
+          </p>
+          <p>
+            Navyug Sanskriti Foundation formalizes this work. Vikram and co-founder Shrishti Verma, a lawyer who taught
+            alongside him, are joined by Mihir Bhaskar and Smitha Cunigal, public policy researchers with experience in
+            designing and evaluating programs. Together, we want to run this work from
+            a stable base, measure how it is working, and share what we learn.
+          </p>
+          <p><a href="/about#our-story">Read our full story →</a></p>
+        </div>
+        <!-- Video slot: replace this image with the video of Vikram and the team talking about the work once it is ready. -->
+        <img src="/images/community/teaching.jpeg" alt="Children gathered for an informal class in Yamuna Khadar" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Where we work</p>
+      <h2 style="margin-top:0;max-width:820px">Settlements on the banks of the Yamuna River in Mayur Vihar Phase-I, Delhi</h2>
+      <div class="prose">
+        <p>
+          Our 2020 community census mapped <span class="hl">~1,500 households</span> (6,385 individuals) living in
+          these settlements. We estimated there were <span class="hl">400+ children</span> who had either never
+          attended school or had dropped out. Floods and DDA demolition drives regularly uproot families here, and each
+          move is a point where a child's schooling can stop. <a href="/about#yamuna-khadar">More about the area →</a>
+        </p>
+        <p>
+          You can see the specific areas we are focusing on highlighted in blue on the map below, and get a rough sense
+          of how things look 'on the ground' through the pictures.
+        </p>
+      </div>
+      <CommunityMap />
+      <div class="photos">
+        {gallery.map((src) => <img src={src} alt="Homes in the Yamuna Khadar settlement, Mayur Vihar Phase-I" loading="lazy" />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <p class="eyebrow">Explore</p>
+      <div class="cards four">
+        <a class="card" href="/programs">
+          <img src="/images/nets/dist3.jpeg" alt="Our team working in the community" loading="lazy" />
+          <div class="body">
+            <h3>Our approach</h3>
+            <p>Open schooling through NIOS, documentation support, bridge education, role models, and skilling.</p>
+            <span class="more">Learn more →</span>
+          </div>
+        </a>
+        <a class="card" href="/impact/surveys-and-research">
+          <img src="/images/research/fullmap.png" alt="Map of household locations from the 2020 community survey" loading="lazy" />
+          <div class="body">
+            <h3>Surveys &amp; research</h3>
+            <p>To better understand the community we are serving, identify beneficiaries for our programs, and evaluate how our programs are working.</p>
+            <span class="more">See the findings →</span>
+          </div>
+        </a>
+        <a class="card" href="/impact#relief">
+          <img src="/images/nets/dist1.jpeg" alt="A mosquito net being handed to a resident" loading="lazy" />
+          <div class="body">
+            <h3>Relief &amp; distribution</h3>
+            <p>Fulfilling pressing short-term needs through targeted campaigns — e.g., distribution of mosquito nets in the monsoon, tarps for storm relief, and ration support.</p>
+            <span class="more">Our impact →</span>
+          </div>
+        </a>
+        <a class="card" href="/stories">
+          <img src="/images/community/gallery4.jpeg" alt="Homes in Yamuna Khadar" loading="lazy" />
+          <div class="body">
+            <h3>Stories</h3>
+            <p>Young people from this community who returned to education and went on to work.</p>
+            <span class="more">Read their stories →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container"><div class="prose">
+      <p class="eyebrow">Current pilot</p>
+      <h2 style="margin-top:0">Help 28 children return to learning</h2>
+      <p>
+        We identified 28 children who have dropped out early, are eager to learn, and whose families are willing to
+        support them in returning to education. We are raising funds to teach, mentor, and support them.
+      </p>
+      <div class="btn-row">
+        <a class="btn accent" href={MILAAP}>Donate on Milaap</a>
+        <a class="btn ghost" href="/stories">Read our stories</a>
+      </div>
+    </div></div>
+  </section>
+</Base>

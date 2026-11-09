@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+const mapUrl = 'https://www.google.com/maps/d/viewer?mid=1emmaMnDHtxVKNfdo4X0W8LTs5erOo5UJ&ll=28.594867628626265%2C77.27872214999998&z=13';
+---
+
+<Base title="Mosquito Net Distribution">
+  <PageHero
+    crumbs={[{ href: '/impact', label: 'Impact & Research' }]}
+    eyebrow="Relief campaign · August–September 2020"
+    title="Mosquito Net Distribution"
+    lede="660 insecticide-treated mosquito nets, distributed free of cost."
+  />
+
+  <section class="section">
+    <div class="container prose">
+      <h2>The issue</h2>
+      <p>
+        The monsoons typically bring about a spike in cases of dengue, malaria, chikungunya, and other vector-borne
+        diseases. This community is particularly vulnerable for a few reasons:
+      </p>
+      <ol>
+        <li>Proximity to a water body; specifically, this community sits on the banks of <a href={mapUrl}>the Yamuna River</a></li>
+        <li>
+          Households residing in huts or katcha houses that do not provide adequate shelter from the outdoors
+          <img src="/images/community/house1.jpeg" alt="A katcha house in the community" style="max-width:320px;margin:12px 0;border-radius:10px" loading="lazy" />
+        </li>
+        <li>
+          Lack of other means of protection: from our <a href="/impact/surveys-and-research#census-2020">'census'
+          survey</a>, we found that <strong>99% of households do not have a mosquito net or use a broken one.</strong>
+          We have seen instances where households use thin sarees as an alternative, but this is ineffective.
+        </li>
+        <li>
+          High volume of infants; <strong>35% of households have at least one child under the age of 5, totalling 712
+          children in the community.</strong> Infants and pregnant women are thought to be the
+          <a href="https://www.who.int/malaria/areas/high_risk_groups/infants/en/">most vulnerable groups for malaria</a>.
+        </li>
+      </ol>
+      <p>
+        Even without the rains, getting bitten by mosquitos through the evenings and nights is a common affliction for
+        residents. A <a href="https://www.newindianexpress.com/cities/chennai/2019/sep/19/are-the-urban-poor-sleep-deprived-2035819.html">recent
+        J-PAL study</a> showed that the urban poor face significant barriers to quality sleep, which can have
+        consequences on productivity, decision-making, health and quality of life.
+      </p>
+
+      <h2>What we did</h2>
+      <p>
+        <a href="https://www.afro.who.int/news/treated-mosquito-nets-are-safe-and-effective">Insecticide-treated bednets</a>
+        are well established as the safest and most cost-effective way of preventing the spread of mosquito-borne
+        diseases. It has also now been well established through several studies that <strong>free distribution</strong>
+        is better for coverage and take-up than all other pricing or cost-sharing models (see
+        <a href="https://www.povertyactionlab.org/evaluation/adoption-insecticide-treated-bednets-among-poor-households-orissa-india">here</a>,
+        <a href="https://www.povertyactionlab.org/evaluation/role-exposure-social-networks-and-marketing-messages-households-willingness-pay-malaria">here</a>,
+        <a href="https://www.povertyactionlab.org/evaluation/free-distribution-or-cost-sharing-evidence-malaria-prevention-experiment-kenya">here</a>
+        and <a href="https://www.who.int/mediacentre/news/releases/2007/pr43/en/">here</a>).
+      </p>
+      <p>
+        With the help of kind donations from over 50 individuals, we were able to <strong>distribute a total of 660
+        insecticide-treated mosquito nets free of cost.</strong> Below are some pictures from the distribution, and you
+        can view a short video <a href="https://drive.google.com/file/d/1S0H9MG1Ys9WD-q9dn1HyHJamSilqiGBL/view">here</a>.
+      </p>
+    </div>
+    <div class="container">
+      <div class="photos tall">
+        <img src="/images/nets/dist1.jpeg" alt="A resident receiving a mosquito net" loading="lazy" />
+        <img src="/images/nets/dist2.jpeg" alt="Mosquito net distribution" loading="lazy" />
+        <img src="/images/nets/dist3.jpeg" alt="Mosquito net distribution" loading="lazy" />
+      </div>
+    </div>
+    <div class="container prose">
+      <h2>Further details and thoughts</h2>
+      <h3>Procurement and funding</h3>
+      <ul>
+        <li>
+          The process of identifying a vendor for the nets involved getting quotes from 5 different sources. Of those
+          that met our threshold for quality (durable and insecticide-treated), our cheapest post-negotiation price was
+          INR 284 per net (including 5% GST). The nets were purchased and picked up in 7 batches - you can see all the
+          receipts <a href="https://www.dropbox.com/sh/c5lz4qskj9vp6z3/AAArAmu11HM3mvKw8MkBnBbxa?dl=0">here</a>
+        </li>
+        <li>
+          We raised funds primarily through a <a href="https://www.ketto.org/fundraiser/mosquito-net-distribution-for-slum-dwellers-in-delhi">campaign
+          on Ketto.org</a>. The total cost of all the nets was INR 1,87,110, of which INR 1,81,625 came from the
+          fundraiser campaign. The rest was through individual Google Pay transfers.
+        </li>
+      </ul>
+      <h3>Distribution</h3>
+      <ul>
+        <li>
+          Most of the distribution took place between 31st August and 11th September 2020. Due to heavy rains flooding
+          mud paths, we deemed it infeasible to deliver the nets to individual houses, and instead set up distribution
+          points for each 'block' (you can see these block boundaries <a href="/#community-map">here</a>).
+        </li>
+        <li>
+          Having seen enough examples of inclusion/exclusion errors from government schemes, we decided not to place any
+          strict criteria for receiving a net. However, we did specifically encourage households with infants to collect
+          one by reaching out to them using details collected from our census survey. Of the final 660 households that
+          recieved a net, 350 had a child under the age of 5.
+        </li>
+        <li>
+          To document and track the distribution, we set up a digital data entry form to be filled for every net handed
+          out. Where possible, recipients provided ID details (phone/Aadhaar/ration card) that would help match them to
+          our earlier survey. For those that didn't match, we collected their names and phone numbers. 24% of recipients
+          didn't match to our census data - we believe many of these were women who had returned post-lockdown and were
+          thus missed in our survey.
+        </li>
+      </ul>
+    </div>
+  </section>
+</Base>

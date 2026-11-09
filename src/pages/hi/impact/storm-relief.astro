@@ -1,0 +1,49 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+---
+
+<Base title="तूफ़ान राहत">
+  <PageHero
+    crumbs={[{ href: '/hi/impact', label: 'प्रभाव और शोध' }]}
+    eyebrow="राहत अभियान · जून 2020"
+    title="तूफ़ान राहत"
+    lede="121 परिवारों को अपने घर फिर से बनाने के लिए वॉटरप्रूफ़ तिरपाल।"
+  />
+
+  <section class="section">
+    <div class="container prose">
+      <h2>समस्या</h2>
+      <p>
+        जून 2020 के पहले हफ़्ते में दिल्ली में तेज़ बारिश और आँधी आई। इस समुदाय में घर ज़्यादातर कच्चे और अस्थायी होते
+        हैं, इसलिए कोई हैरानी की बात नहीं कि कई परिवारों पर इसका बहुत बुरा असर पड़ा:
+      </p>
+    </div>
+    <div class="container">
+      <div class="photos tall">
+        <img src="/images/storm/before1.jpeg" alt="जून 2020 के तूफ़ान में टूटी एक झोपड़ी" loading="lazy" />
+        <img src="/images/storm/before3.jpeg" alt="जून 2020 के तूफ़ान में टूटी एक झोपड़ी" loading="lazy" />
+        <img src="/images/storm/before4.jpeg" alt="समुदाय के घरों को तूफ़ान से हुआ नुकसान" loading="lazy" />
+      </div>
+    </div>
+    <div class="container prose">
+      <h2>हमने क्या किया</h2>
+      <p>
+        परिवारों को उनकी टूटी झोपड़ियाँ फिर से बनाने में मदद के लिए हमने बड़े वॉटरप्रूफ़ तिरपाल खरीदे, जिन्हें छप्पर
+        वाली छतों पर डाला जा सके। ये तिरपाल घरों को हवा और बारिश से बचाने के साथ-साथ तेज़ गर्मियों में धूप रोकने के भी
+        काम आते।
+      </p>
+      <p>
+        <strong>एक तिरपाल की कीमत INR 1,032 थी, और हम 121 परिवारों की मदद करने लायक पैसे जुटा पाए (कुल INR 1,24,870)।</strong>
+        नीचे वितरण की कुछ तस्वीरें हैं:
+      </p>
+    </div>
+    <div class="container">
+      <div class="photos tall">
+        <img src="/images/storm/after1.jpeg" alt="नए तिरपाल के साथ एक परिवार" loading="lazy" />
+        <img src="/images/storm/after2.jpeg" alt="झोपड़ियों की छतों पर डाले गए तिरपाल" loading="lazy" />
+        <img src="/images/storm/after3.jpeg" alt="झोपड़ियों की छतों पर डाले गए तिरपाल" loading="lazy" />
+      </div>
+    </div>
+  </section>
+</Base>
